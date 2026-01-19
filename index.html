@@ -1305,6 +1305,139 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Results Slideshow Styles */
+        .results-proof {
+            padding: 4rem 0;
+        }
+
+        .proof-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .proof-section {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 1.5rem;
+            overflow: hidden;
+        }
+
+        .proof-section h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--primary-purple);
+        }
+
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .slideshow-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .slide img {
+            max-width: 100%;
+            max-height: 400px;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .slideshow-nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .slideshow-btn {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .slideshow-btn:hover {
+            background: var(--primary-purple);
+            border-color: var(--primary-purple);
+        }
+
+        .slideshow-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .slideshow-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .slideshow-dot.active {
+            background: var(--primary-purple);
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 1024px) {
+            .proof-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .results-proof {
+                padding: 2rem 0;
+            }
+
+            .proof-section {
+                padding: 1rem;
+            }
+
+            .proof-section h3 {
+                font-size: 1rem;
+            }
+
+            .slide img {
+                max-height: 280px;
+            }
+
+            .slideshow-btn {
+                width: 32px;
+                height: 32px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1651,6 +1784,109 @@
                 <p>Exclusive Leads</p>
             </div>
         </div>
+
+        <!-- Visual Proof Slideshows -->
+        <div class="results-proof">
+            <div class="proof-grid">
+                <!-- Client Texts Slideshow -->
+                <div class="proof-section">
+                    <h3>What Our Clients Say</h3>
+                    <div class="slideshow-container" id="clientSlideshow">
+                        <div class="slideshow-wrapper">
+                            <div class="slide">
+                                <img src="images/results/client-texts/Screenshot at Jan 11 04-18-58.png" alt="Client testimonial - seeing good things to come">
+                            </div>
+                            <div class="slide">
+                                <img src="images/results/client-texts/Screenshot at Jan 19 00-03-28.png" alt="Client testimonial - $2390 job scheduled">
+                            </div>
+                            <div class="slide">
+                                <img src="images/results/client-texts/Screenshot at Jan 20 00-46-25.png" alt="Client testimonial - $5990 removal estimate, deals waiting to happen">
+                            </div>
+                            <div class="slide">
+                                <img src="images/results/client-texts/Screenshot at Jan 20 00-46-45.png" alt="Client testimonial - multiple jobs finished and scheduled">
+                            </div>
+                            <div class="slide">
+                                <img src="images/results/client-texts/Screenshot at Jan 20 00-47-22.png" alt="Client testimonial - closed $1000 trim job">
+                            </div>
+                            <div class="slide">
+                                <img src="images/results/client-texts/Screenshot at Jan 20 00-47-59.png" alt="Client testimonial - closed $1400 Saturday job">
+                            </div>
+                            <div class="slide">
+                                <img src="images/results/client-texts/Screenshot at Jan 20 00-50-29.png" alt="Client testimonial - multiple closed jobs">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideshow-nav">
+                        <button class="slideshow-btn" onclick="changeSlide('client', -1)">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"/>
+                            </svg>
+                        </button>
+                        <div class="slideshow-dots" id="clientDots"></div>
+                        <button class="slideshow-btn" onclick="changeSlide('client', 1)">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Ad Campaigns Slideshow -->
+                <div class="proof-section">
+                    <h3>Campaign Results</h3>
+                    <div class="slideshow-container" id="adSlideshow">
+                        <div class="slideshow-wrapper">
+                            <div class="slide">
+                                <img src="images/results/ad-campaigns/011b7a058598bc7f34e39c782dabaa56_1200_80.webp" alt="42 appointments in two weeks">
+                            </div>
+                            <div class="slide">
+                                <img src="images/results/ad-campaigns/b00e888bf2915f6975663c275d627c00_1200_80.webp" alt="13 appointments in 3 days">
+                            </div>
+                            <div class="slide">
+                                <img src="images/results/ad-campaigns/fd2add2feee1b4d1d4c626009d01a102_1200_80.webp" alt="188 appointments in 46 days">
+                            </div>
+                            <div class="slide">
+                                <img src="images/results/ad-campaigns/58e922e30ebc72bfef0f91433ddd1bea_1200_80.webp" alt="322 appointments in 60 days">
+                            </div>
+                            <div class="slide">
+                                <img src="images/results/ad-campaigns/42144da50b363eee6248bd36762aad87_1200_80.webp" alt="Campaign results">
+                            </div>
+                            <div class="slide">
+                                <img src="images/results/ad-campaigns/e76e09ef73132603bb416c9f7b01763c_1200_80.webp" alt="Campaign results">
+                            </div>
+                            <div class="slide">
+                                <img src="images/results/ad-campaigns/f1e820bb5d2d021facf4159c7325d93d_1200_80.webp" alt="Campaign results">
+                            </div>
+                            <div class="slide">
+                                <img src="images/results/ad-campaigns/4c42a7f645efb052b744cdcd4a67202d_1200_80.webp" alt="Campaign results">
+                            </div>
+                            <div class="slide">
+                                <img src="images/results/ad-campaigns/c3011a04e62a058a527dbd4140204a8e_1200_80.webp" alt="Campaign results">
+                            </div>
+                            <div class="slide">
+                                <img src="images/results/ad-campaigns/Screenshot at Jun 19 18-49-51.png" alt="188 replacement appointments">
+                            </div>
+                            <div class="slide">
+                                <img src="images/results/ad-campaigns/Screenshot at Jan 19 23-41-45.png" alt="Facebook Ads Manager results">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slideshow-nav">
+                        <button class="slideshow-btn" onclick="changeSlide('ad', -1)">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="15 18 9 12 15 6"/>
+                            </svg>
+                        </button>
+                        <div class="slideshow-dots" id="adDots"></div>
+                        <button class="slideshow-btn" onclick="changeSlide('ad', 1)">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- ROI Calculator -->
@@ -1950,6 +2186,88 @@
                     });
                 }
             });
+        });
+
+        // Slideshow functionality
+        const slideshows = {
+            client: { current: 0, total: 0, autoplay: null },
+            ad: { current: 0, total: 0, autoplay: null }
+        };
+
+        function initSlideshow(name, containerId, dotsId) {
+            const container = document.getElementById(containerId);
+            const dotsContainer = document.getElementById(dotsId);
+            if (!container || !dotsContainer) return;
+
+            const slides = container.querySelectorAll('.slide');
+            slideshows[name].total = slides.length;
+
+            // Create dots
+            dotsContainer.innerHTML = '';
+            for (let i = 0; i < slides.length; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'slideshow-dot' + (i === 0 ? ' active' : '');
+                dot.onclick = () => goToSlide(name, i);
+                dotsContainer.appendChild(dot);
+            }
+
+            // Start autoplay
+            startAutoplay(name);
+        }
+
+        function changeSlide(name, direction) {
+            const slideshow = slideshows[name];
+            slideshow.current += direction;
+
+            if (slideshow.current >= slideshow.total) {
+                slideshow.current = 0;
+            } else if (slideshow.current < 0) {
+                slideshow.current = slideshow.total - 1;
+            }
+
+            updateSlideshow(name);
+            resetAutoplay(name);
+        }
+
+        function goToSlide(name, index) {
+            slideshows[name].current = index;
+            updateSlideshow(name);
+            resetAutoplay(name);
+        }
+
+        function updateSlideshow(name) {
+            const containerId = name === 'client' ? 'clientSlideshow' : 'adSlideshow';
+            const dotsId = name === 'client' ? 'clientDots' : 'adDots';
+
+            const container = document.getElementById(containerId);
+            const dotsContainer = document.getElementById(dotsId);
+            if (!container || !dotsContainer) return;
+
+            const wrapper = container.querySelector('.slideshow-wrapper');
+            const dots = dotsContainer.querySelectorAll('.slideshow-dot');
+
+            wrapper.style.transform = `translateX(-${slideshows[name].current * 100}%)`;
+
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === slideshows[name].current);
+            });
+        }
+
+        function startAutoplay(name) {
+            slideshows[name].autoplay = setInterval(() => {
+                changeSlide(name, 1);
+            }, 4000);
+        }
+
+        function resetAutoplay(name) {
+            clearInterval(slideshows[name].autoplay);
+            startAutoplay(name);
+        }
+
+        // Initialize slideshows on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            initSlideshow('client', 'clientSlideshow', 'clientDots');
+            initSlideshow('ad', 'adSlideshow', 'adDots');
         });
     </script>
 </body>
